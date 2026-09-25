@@ -14,9 +14,9 @@ namespace CashierApplication
         [STAThread]
         static void Main()
         {
+            Application.Run(new frmLoginAccount());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPurchaseDIscountedItem());
         }
     }
 }

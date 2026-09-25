@@ -14,9 +14,11 @@ namespace CashierApplication
     public partial class frmPurchaseDIscountedItem : Form
     {
         private DiscountedItem purchasedItem;
-        public frmPurchaseDIscountedItem()
+        private Form loginFormReference;
+        public frmPurchaseDIscountedItem(Form loginForm)
         {
             InitializeComponent();
+            this.loginFormReference = loginForm;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -69,5 +71,29 @@ namespace CashierApplication
                 MessageBox.Show("Please enter a valid numeric value for Payment.");
             }
         }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void exitApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+            if (loginFormReference != null)
+            {
+                loginFormReference.Show();
+            }
+
+            // naglagay lang po ako ng ganito kasi may error po na
+            // nagrrun pa rin po sya kahit inexit na hehe 
+
+        }
+
     }
 }
